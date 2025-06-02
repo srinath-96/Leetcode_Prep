@@ -1,10 +1,8 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        a=[]
-        for i in range(0,len(nums)+1):
-            for j in range(i+1,len(nums)):
-                if nums[i]+nums[j]==target:
-                    a.append(i)
-                    a.append(j)
-                    a.sort()
-                    return a
+        num_map = {}  # Create a hash map to store numbers and their indices
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in num_map:
+                return [num_map[complement], i]  # Return indices
+            num_map[num] = i  # Store the number and its index in the hash map
